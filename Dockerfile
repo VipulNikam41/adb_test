@@ -1,5 +1,5 @@
 # set base image (host OS)
-FROM python:3.8
+FROM python:3.8-buster
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
@@ -21,7 +21,7 @@ RUN apt-get install -y mongodb-org
 RUN apt-get install -y yarn
 
 # Install PIP
-RUN easy_install pip
+RUN apt-get install -y python3-pip
 
 
 ENV ENV_TYPE staging
@@ -32,7 +32,9 @@ ENV MONGO_PORT 27017
 ENV PYTHONPATH=$PYTHONPATH:/src/
 
 # copy the dependencies file to the working directory
-COPY src/requirements.txt .
+# COPY src/requirements.txt .
+RUN mkdir /src
+COPY src /src
 
 # install dependencies
-RUN pip install -r requirements.txt
+RUN pip3 install -r /src/requirements.txt
