@@ -1,0 +1,33 @@
+.todo-list {
+  background-color: #9a8c98;
+  width: 20%;
+  float: left;
+  flex-direction: column;
+  display: flex;
+  margin-left: 20%;
+  height: 600px;
+}
+
+.todo-list-bar {
+  overflow: scroll;
+}
+
+.todo-item {
+  padding: 5px;
+  border-bottom: 1px solid white;
+}
+
+.todo-item:active {
+  background-color: #816b7d;
+}
+
+.plus-button {
+  background-color: #4a4e69;
+  color: white;
+  border: none;
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}

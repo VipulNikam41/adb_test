@@ -1,0 +1,45 @@
+.new-todo {
+  background-color: #9a8c98;
+  width: 39%;
+  float: right;
+  flex-direction: column;
+  display: flex;
+  margin-right: 20%;
+  height: 600px;
+}
+
+.title-input {
+  border: none;
+  border-bottom: 1px solid grey;
+  height: 50px;
+  background-color: inherit;
+  padding: 5px;
+}
+
+.content-input {
+  border: none;
+  border-bottom: 1px solid grey;
+  height: 500px;
+  background-color: inherit;
+  padding: 5px;
+}
+
+.add-button {
+  height: 40px;
+  width: 100px;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  background-color: #4a4e69;
+  color: white; /* Optional: to ensure text is visible */
+  border: none; /* Optional: to remove any default border */
+  cursor: pointer; /* Optional: to change cursor on hover */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Add some space between the buttons */
+}
