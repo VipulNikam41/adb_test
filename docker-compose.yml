@@ -8,8 +8,6 @@ services:
       - "8000:8000"
     links:
       - mongo
-    volumes:
-      - ${ADBREW_CODEBASE_PATH}/tmp:/tmp
 
   app:
     build: .
