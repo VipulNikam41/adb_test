@@ -81,14 +81,15 @@ WSGI_APPLICATION = 'rest.wsgi.application'
 MONGO_DB_NAME = 'test_db'
 MONGO_DB_HOST = 'mongo'
 MONGO_DB_PORT = 27017
-connect(db=MONGO_DB_NAME, host=f'mongodb://{MONGO_DB_HOST}:{MONGO_DB_PORT}/')
+MONGO_URL = f'mongodb://{MONGO_DB_HOST}:{MONGO_DB_PORT}/'
+connect(db=MONGO_DB_NAME, host=MONGO_URL)
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'test_db',
+        'NAME': MONGO_DB_NAME,
         'ENFORCE_SCHEMA': False,  # Optional
         'CLIENT': {
-            'host': 'mongodb://mongo:27017',
+            'host': MONGO_URL,
             # 'username': 'root',
             # 'password': '1234',
             # 'authSource': 'admin'
