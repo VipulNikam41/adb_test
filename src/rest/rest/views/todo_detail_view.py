@@ -1,20 +1,25 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest.serializers.todo_serializer import TodoSerializer
 from rest.services.todo_service import TodoService
-from django.shortcuts import get_object_or_404
+from rest.models import Todo
 
 class TodoDetailView(APIView):
     def put(self, request, id):
-        todo = get_object_or_404(Todo, id=id)
-        serializer = TodoSerializer(todo, data=request.data, partial=True)
-        if serializer.is_valid():
-            todo = TodoService.update_todo(todo, serializer.validated_data)
-            return Response(TodoSerializer(todo).data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        updateTodo = TodoService.get_todo(id=id)
+        if updateTodo is None:
+            return Response(None, status=status.HTTP_400_BAD_REQUEST)
+        todo_item = request.data
+        if todo_item.get('title', ''):
+            updateTodo.title = todo_item.get('title', '')
+        if todo_item.get('content', ''):
+            updateTodo.content = todo_item.get('content', '')
+        updateTodo.save()
+        return Response(updateTodo.to_dict(), status=status.HTTP_200_OK)
 
     def delete(self, request, id):
-        todo = get_object_or_404(Todo, id=id)
+        todo = TodoService.get_todo(id=id)
+        if todo is None:
+            return Response("Todo not present", status=status.HTTP_204_NO_CONTENT)
         TodoService.delete_todo(todo)
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response("Todo Deleted", status=status.HTTP_204_NO_CONTENT)
