@@ -21,7 +21,11 @@ const TodoList = ({ todos, handleSelectTodo }) => {
       </div>
       <div className="todo-list-bar">
         {todos.map((todo, index) => (
-          <div className="todo-item" onClick={() => selectItem(todo)}>
+          <div
+            key={todo.id}
+            className="todo-item"
+            onClick={() => selectItem(todo)}
+          >
             {todo.title}
           </div>
         ))}
