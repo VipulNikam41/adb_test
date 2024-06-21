@@ -14,6 +14,7 @@
   height: 50px;
   background-color: inherit;
   padding: 5px;
+  color: white;
 }
 
 .content-input {
@@ -22,6 +23,7 @@
   height: 500px;
   background-color: inherit;
   padding: 5px;
+  color: white;
 }
 
 .add-button {
