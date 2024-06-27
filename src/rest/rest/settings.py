@@ -14,6 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 import sys, os
 from corsheaders.defaults import default_headers
+from mongoengine import connect
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'rest'
 ]
 
 MIDDLEWARE = [
@@ -76,11 +78,22 @@ WSGI_APPLICATION = 'rest.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+MONGO_DB_NAME = 'test_db'
+MONGO_DB_HOST = 'mongo'
+MONGO_DB_PORT = 27017
+MONGO_URL = f'mongodb://{MONGO_DB_HOST}:{MONGO_DB_PORT}/'
+connect(db=MONGO_DB_NAME, host=MONGO_URL)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
+        'ENGINE': 'djongo',
+        'NAME': MONGO_DB_NAME,
+        'ENFORCE_SCHEMA': False,  # Optional
+        'CLIENT': {
+            'host': MONGO_URL,
+            # 'username': 'root',
+            # 'password': '1234',
+            # 'authSource': 'admin'
+        }
     }
 }
 

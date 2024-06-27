@@ -1,0 +1,6 @@
+*.gitignore
+**.DS_Store
+**__pycache__
+**.env
+test/
+**.eslintcache

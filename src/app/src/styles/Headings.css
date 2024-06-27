@@ -1,0 +1,21 @@
+.app-heading {
+  font-size: 30px;
+  padding: 2%;
+}
+
+.component-heading-1 {
+  font-size: 25px;
+  margin: 5px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+.component-heading-2 {
+  font-size: 25px;
+  margin: 5px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
