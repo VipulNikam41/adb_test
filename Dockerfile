@@ -32,7 +32,6 @@ ENV MONGO_PORT 27017
 ENV PYTHONPATH=$PYTHONPATH:/src/
 
 # copy the dependencies file to the working directory
-# COPY src/requirements.txt .
 RUN mkdir /src
 COPY src /src
 
